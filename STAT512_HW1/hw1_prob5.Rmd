@@ -1,0 +1,32 @@
+---
+title: "hw1_prob2"
+author: "Haoran"
+date: "2018Äê8ÔÂ30ÈÕ"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
+```{r message=FALSE}
+## Loading library and read the file
+library(ALSM)
+flights <- read.csv(file="C:/Users/Haoran Zhang/Downloads/airfreight.csv",
+                header=TRUE,sep=",")
+plot(Y~X, data = flights)
+
+## Linear regression model
+## Problem 5 (a) and (b)
+flights.mod <- lm(Y~X, data = flights)
+summary(flights.mod)
+## make it new observation at X = 2
+new <- data.frame(X = 2)
+##calculate the confidence interval of estimated value of Y
+ci.reg(flights.mod, new, type='m',alpha=0.01)
+
+## Problem (c) and (d)
+## predict Y hat on the the next observation
+ci.reg(flights.mod, new, type='n',alpha=0.01)
+## predict the average Y hat on the next m observations
+ci.reg(flights.mod, new, type='nm', m=3, alpha=0.01)
+```

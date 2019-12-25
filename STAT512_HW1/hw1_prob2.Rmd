@@ -1,0 +1,32 @@
+---
+title: "hw1_prob2"
+author: "Haoran"
+date: "2018Äê8ÔÂ30ÈÕ"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
+```{r message=FALSE}
+##read files and plot
+Grades <- read.csv(file="C:/Users/Haoran Zhang/Desktop/GPA.csv",
+                header=TRUE,sep=",")
+plot(GPA~ACT, data = Grades)
+
+##Problem 2 (a) and (b)
+##linear regression model
+Grades.mod <- lm(GPA~ACT, data = Grades)
+summary(Grades.mod)
+
+## Initialize parameters
+## and calculate t value
+n = 10
+alpha = 0.05
+qt(1-0.5*alpha,n-2)
+## Probelem 2 (c)
+## The 95 percent confidence Interval of slope and intercept
+confint(lm(GPA~ACT,data = Grades),level=0.95)
+```
+
+
